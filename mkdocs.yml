@@ -1,0 +1,52 @@
+site_name: Corso Git & GitHub
+site_description: Corso pratico di Git e GitHub — dal setup alla pubblicazione
+site_author: mptyl
+repo_url: https://github.com/mptyl/corso-git-github
+repo_name: mptyl/corso-git-github
+
+theme:
+  name: material
+  language: it
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Passa al tema scuro
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Passa al tema chiaro
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+
+nav:
+  - Home: index.md
+  - Lezioni:
+    - "0. Setup": lezione-00.md
+    - "1. Creare il progetto": lezione-01.md
+    - "2. Unirsi al progetto": lezione-02.md
+    - "3. Worktree e prima feature": lezione-03.md
+    - "4. Worktree parallelo": lezione-04.md
+    - "5. La prima Pull Request": lezione-05.md
+    - "6. Conflitto di merge": lezione-06.md
+    - "7. Rollback e correzioni": lezione-07.md
+    - "8. Hotfix di produzione": lezione-08.md
+    - "9. Documentazione e Pages": lezione-09.md
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - toc:
+      permalink: true
+  - tables
+  - attr_list
+  - md_in_html
