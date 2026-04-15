@@ -99,15 +99,17 @@ Git e gia preinstallato sul server Linux. Ma deve sapere chi sei. Ogni commit po
 
 ```bash
 # Simone
-git config --global user.name "Simone Rossi"
-git config --global user.email "simone@example.com"
+git config --global user.name "Simone Mezzabotta"
+git config --global user.email "simone.mezzabotta@uni.com"
 
 # Leonardo
-git config --global user.name "Leonardo Bianchi"
-git config --global user.email "leonardo@example.com"
+git config --global user.name "Leonardo Porcacchia"
+git config --global user.email "leonardo.porcacchia@uni.com"
 ```
 
 **Importante:** Usa la stessa email collegata al tuo account GitHub.
+
+**Nota:** Simone e Leonardo hanno ciascuno il proprio account Linux sul server (`/home/simone/` e `/home/leonardo/`). Ognuno esegue questi comandi **nel proprio terminale** — `git config --global` scrive in `~/.gitconfig`, quindi ogni utente Linux ha la propria identità Git. Non c'è conflitto tra le due configurazioni.
 
 ### Verifica
 
@@ -119,16 +121,16 @@ Cerca queste righe nell'output:
 
 ```
 user.name=Simone Rossi
-user.email=simone@example.com
+user.email=simone.mezzabotta@uni.com
 ```
 
 ### Altre configurazioni utili
 
 ```bash
 git config --global core.editor "nano"
-git config --global color.ui auto
-git config --global init.defaultBranch main
 ```
+
+Git a volte apre un editor di testo: per esempio quando fai `git commit` senza messaggio (`-m`), oppure durante un merge o un rebase. Di default usa `vi`, che non e intuitivo se non lo conosci. Con `nano` hai un editor semplice — in basso vedi i comandi (`Ctrl+O` per salvare, `Ctrl+X` per uscire).
 
 Se preferisci usare Antigravity come editor per i commit:
 
@@ -136,25 +138,39 @@ Se preferisci usare Antigravity come editor per i commit:
 git config --global core.editor "antigravity --wait"
 ```
 
+Il flag `--wait` e fondamentale: dice al terminale di aspettare che tu chiuda il file in Antigravity prima di proseguire. Senza `--wait`, il commit partirebbe con un file vuoto e verrebbe annullato.
+
+```bash
+git config --global color.ui auto
+```
+
+Aggiunge colore all'output di comandi come `git status`, `git log`, `git diff`. Per esempio i file modificati appaiono in rosso, quelli in staging in verde. Utile per leggere piu velocemente lo stato del repository. Su terminali moderni e quasi sempre gia attivo di default, ma non costa nulla assicurarsene.
+
+```bash
+git config --global init.defaultBranch main
+```
+
+Quando crei un nuovo repository con `git init`, Git crea il primo branch. Storicamente si chiamava `master`; dal 2020 il nome raccomandato e `main`. Questo comando assicura che ogni nuovo repository usi `main` come branch iniziale, evitando confusione con repository piu vecchi che usano ancora `master`.
+
 ---
 
 ## 0.4 Chiave SSH per GitHub
 
 La chiave SSH ti permette di comunicare con GitHub **senza digitare la password ogni volta**. E il metodo di autenticazione raccomandato.
 
-**Attenzione:** Simone e Leonardo lavorano su un server Linux tramite Remote-SSH. La chiave SSH va generata **sul server Linux**, non sul PC locale. Sara questa chiave a autenticarsi con GitHub quando fate push o pull dal server.
+**Attenzione:** Simone e Leonardo lavorano su un server Linux tramite Remote-SSH. La chiave SSH va generata **sul server Linux**, non sul PC locale. Sarà questa chiave a autenticarsi con GitHub quando fate push o pull dal server.
 
 ### Generare la chiave
 
 ```bash
 # Simone
-ssh-keygen -t ed25519 -C "simone@example.com"
+ssh-keygen -t ed25519 -C "simone.mezzabotta@uni.com"
 
 # Leonardo
-ssh-keygen -t ed25519 -C "leonardo@example.com"
+ssh-keygen -t ed25519 -C "leonardo.porcacchia@uni.com"
 ```
 
-Quando chiede dove salvare, premi **Invio** per accettare il default (`/home/simone/.ssh/id_ed25519`).
+Quando chiede dove salvare, premi **Invio** per accettare il default. La chiave viene salvata nella home dell'utente corrente: Simone troverà `/home/simone/.ssh/id_ed25519`, Leonardo troverà `/home/leonardo/.ssh/id_ed25519`. Le due chiavi sono completamente indipendenti — ogni utente ha la propria cartella `.ssh/`.
 
 Quando chiede la passphrase:
 - **Per il corso:** premi Invio due volte (nessuna passphrase, piu comodo)
@@ -169,7 +185,7 @@ cat ~/.ssh/id_ed25519.pub
 L'output sara qualcosa del genere:
 
 ```
-ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAI... simone@example.com
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAI... simone.mezzabotta@uni.com
 ```
 
 **Copia tutto l'output** (da `ssh-ed25519` fino all'email).
@@ -250,6 +266,10 @@ Press Enter to open github.com in your browser...
 
 **Se il browser non si apre dal server:** copia il codice one-time, poi apri manualmente https://github.com/login/device sul tuo PC e incollalo.
 
+### Dove vengono salvate le credenziali
+
+Dopo il login, `gh` salva un **token OAuth** in un file locale: `~/.config/gh/hosts.yml`. Questo file vive nella home dell'utente corrente — quindi Simone avra il suo token in `/home/simone/.config/gh/hosts.yml` e Leonardo in `/home/leonardo/.config/gh/hosts.yml`. Da questo momento in poi, ogni comando `gh` (creare PR, leggere issue, ecc.) usa automaticamente quel token. Non serve rifare il login a ogni sessione, a meno che il token non scada o venga revocato da GitHub.
+
 ### Verifica
 
 ```bash
@@ -260,7 +280,7 @@ Output atteso:
 
 ```
 github.com
-  ✓ Logged in to github.com as simone-rossi (oauth_token)
+  ✓ Logged in to github.com as simone-mezzabotta (oauth_token)
   ✓ Git operations for github.com configured to use ssh protocol.
   ✓ Token: gho_************************************
      ✓ Token scopes: gist, read:org, repo
@@ -303,15 +323,15 @@ gh auth status
 
 ```
 # === Configurazione Git ===
-git config --global user.name "Simone Rossi"
-git config --global user.email "simone@example.com"
+git config --global user.name "Simone Mezzabotta"
+git config --global user.email "simone.mezzabotta@uni.com"
 git config --global core.editor "nano"
 git config --global color.ui auto
 git config --global init.defaultBranch main
 git config --list
 
 # === Chiave SSH ===
-ssh-keygen -t ed25519 -C "simone@example.com"
+ssh-keygen -t ed25519 -C "simone.mezzabotta@uni.com"
 cat ~/.ssh/id_ed25519.pub
 ssh -T git@github.com
 
