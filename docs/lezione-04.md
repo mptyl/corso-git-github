@@ -34,14 +34,14 @@ origin/feature/01-menu-giorno
 
 Ora Leonardo vede `origin/feature/01-menu-giorno`, il branch creato da Simone.
 
-Si posiziona su `development` e lo aggiorna:
+Si posiziona su `development` è lo aggiorna:
 
 ```bash
 git checkout development
 git pull origin development
 ```
 
-La sua copia locale di `development` e' ora sincronizzata con il remote.
+La sua copia locale di `development` è ora sincronizzata con il remote.
 
 ---
 
@@ -68,7 +68,7 @@ Output:
 * feature/02-piatti-speciali
 ```
 
-Leonardo e' ora su `feature/02-piatti-speciali` in una directory isolata. Questo branch e' stato creato a partire da `development` — il branch su cui si trovava quando ha eseguito `git worktree add`.
+Leonardo è ora su `feature/02-piatti-speciali` in una directory isolata. Questo branch è stato creato a partire da `development` — il branch su cui si trovava quando ha eseguito `git worktree add`.
 
 ---
 
@@ -166,7 +166,7 @@ git log --oneline
 
 L'output mostra solo i commit originali — nessuna traccia del lavoro sui piatti.
 
-L'insight chiave: **il worktree e' completamente isolato da development**. Leonardo e Simone stanno lavorando contemporaneamente su due feature diverse, ognuno nel proprio worktree, senza interferenze.
+L'insight chiave: **il worktree è completamente isolato da development**. Leonardo e Simone stanno lavorando contemporaneamente su due feature diverse, ognuno nel proprio worktree, senza interferenze.
 
 ---
 
@@ -192,7 +192,7 @@ I branch saranno riuniti tramite Pull Request nella prossima lezione.
 
 ---
 
-## 4.7 Cosa e' successo — dietro le quinte
+## 4.7 Cosa è successo — dietro le quinte
 
 Leonardo visualizza l'albero dei branch:
 
@@ -211,7 +211,7 @@ Entrambi i branch condividono lo stesso commit ancestor su `development`.
 
 Ma Leonardo **ha toccato `ricette.md`** — e questo avra' importanza nella lezione 6, quando i branch verranno mergati e qualcun altro avra' modificato lo stesso file.
 
-> **Nota GitLab:** Il lavoro parallelo con worktree e' identico su GitLab. Tutto cio' che riguarda Git (worktree, branch, commit, push) funziona esattamente allo stesso modo. Le differenze emergono solo quando si usano le funzionalita' della piattaforma (PR/MR, CI/CD, Pages).
+> **Nota GitLab:** Il lavoro parallelo con worktree è identico su GitLab. Tutto cio' che riguarda Git (worktree, branch, commit, push) funziona esattamente allo stesso modo. Le differenze emergono solo quando si usano le funzionalità della piattaforma (PR/MR, CI/CD, Pages).
 
 ---
 
@@ -226,7 +226,7 @@ Ma Leonardo **ha toccato `ricette.md`** — e questo avra' importanza nella lezi
 | `git worktree add <percorso> <branch>` | Crea un nuovo worktree |
 | `cd ~/progetti/RistoranteAPI-piatti` | Si sposta nel worktree |
 | `git branch` | Verifica il branch corrente |
-| `git add <file1> <file2>` | Stage di piu' file |
+| `git add <file1> <file2>` | Stage di più file |
 | `git commit -m "messaggio"` | Commit con messaggio |
 | `git push -u origin <branch>` | Pubblica il branch e setta upstream |
 | `git worktree list` | Elenca tutti i worktree |

@@ -12,7 +12,7 @@ Leonardo ha mergiato la sua PR, ma si accorge che ha inserito un prezzo sbagliat
 
 Vogliamo "tornare indietro" — ma come?
 
-La risposta dipende dalla situazione: il commit e' gia' stato pushato? E' su un branch condiviso? Quanti commit dobbiamo annullare? Git offre diversi strumenti, e scegliere quello sbagliato puo creare problemi a tutto il team.
+La risposta dipende dalla situazione: il commit è già stato pushato? E' su un branch condiviso? Quanti commit dobbiamo annullare? Git offre diversi strumenti, e scegliere quello sbagliato può creare problemi a tutto il team.
 
 ---
 
@@ -28,9 +28,9 @@ Git offre tre comandi principali per tornare indietro:
 
 ### La regola d'oro
 
-> **MAI usare `reset` su commit gia' pushati su un branch condiviso.**
+> **MAI usare `reset` su commit già pushati su un branch condiviso.**
 
-Se il commit e' su un branch dove anche altre persone lavorano (come `development` o `main`), resettare significherebbe riscrivere la storia. Il prossimo `git push` degli altri fallirebbe, e il repository diventerebbe un caos.
+Se il commit è su un branch dove anche altre persone lavorano (come `development` o `main`), resettare significherebbe riscrivere la storia. Il prossimo `git push` degli altri fallirebbe, è il repository diventerebbe un caos.
 
 Per i branch condivisi: **usa sempre `revert`**.
 
@@ -53,7 +53,7 @@ cd ../RistoranteAPI-fix
 
 Simula l'errore: modifica `src/piatti.md` cambiando il prezzo del Cannolo Siciliano:
 
-In Antigravity: apri `src/piatti.md` e modifica il Cannolo Siciliano aggiungendo `- PREZZO ERRATO 500 EUR`. Il contenuto completo del file sara':
+In Antigravity: apri `src/piatti.md` e modifica il Cannolo Siciliano aggiungendo `- PREZZO ERRATO 500 EUR`. Il contenuto completo del file sarà:
 
 ```
 # Catalogo Piatti
@@ -109,7 +109,7 @@ gh pr merge 4 --merge
 
 ## 7.4 Oops! Ci accorgiamo dell'errore
 
-Leonardo se ne accorge dopo il merge. Il commit e' gia' su `development`, condiviso con Simone. Non possiamo usare `reset` perche' riscriverebbe la storia.
+Leonardo se ne accorge dopo il merge. Il commit è già su `development`, condiviso con Simone. Non possiamo usare `reset` perché riscriverebbe la storia.
 
 Leonardo torna al repository principale e aggiorna:
 
@@ -142,7 +142,7 @@ Ora esegue il revert del merge commit:
 git revert -m 1 HEAD
 ```
 
-Il flag `-m 1` significa: "annulla il merge, mantenendo il primo parent (cioe' lo stato di `development` prima del merge)". Git apre l'editor per il messaggio di commit — si puo' salvare con il messaggio predefinito:
+Il flag `-m 1` significa: "annulla il merge, mantenendo il primo parent (cioè lo stato di `development` prima del merge)". Git apre l'editor per il messaggio di commit — si può salvare con il messaggio predefinito:
 
 ```
 Revert "Merge pull request #4 from LeonardoBianchi/feature/04-fix-prezzi"
@@ -173,7 +173,7 @@ c6d7e8f (tag: v0.2) feat: aggiunge ricette base
 b9a0c1d feat: aggiunge piatti al catalogo
 ```
 
-Il file e' tornato allo stato corretto, e la storia mostra sia l'errore sia la correzione. **La storia dice la verita': "abbiamo sbagliato e abbiamo corretto".**
+Il file è tornato allo stato corretto, e la storia mostra sia l'errore sia la correzione. **La storia dice la verità: "abbiamo sbagliato e abbiamo corretto".**
 
 ---
 
@@ -212,15 +212,15 @@ Hai fatto un commit completamente sbagliato su un branch locale:
 git reset --hard HEAD~1
 ```
 
-**Ricorda**: `--hard` e' irreversibile. Se non hai un backup delle modifiche, sono perse per sempre.
+**Ricorda**: `--hard` è irreversibile. Se non hai un backup delle modifiche, sono perse per sempre.
 
-> **Nota Antigravity**: Antigravity non offre un pulsante per `git reset` (e' un'operazione pericolosa). Usa il terminale integrato.
+> **Nota Antigravity**: Antigravity non offre un pulsante per `git reset` (è un'operazione pericolosa). Usa il terminale integrato.
 
 ---
 
 ## 7.6 git cherry-pick — prendere un commit specifico
 
-Scenario: Leonardo ha fatto due commit su un branch feature. Uno e' utile, l'altro no. Vuole portare solo quello buono su `development`.
+Scenario: Leonardo ha fatto due commit su un branch feature. Uno è utile, l'altro no. Vuole portare solo quello buono su `development`.
 
 Leonardo crea il branch di esperimento:
 
@@ -304,13 +304,13 @@ gh pr create --base development --head revert-branch \
   --body "Reverts SimoneRossi/RistoranteAPI#4"
 ```
 
-Questo approccio e' ideale perche' mantiene il workflow delle PR: la correzione passa attraverso review e approvazione, proprio come qualsiasi altra modifica.
+Questo approccio è ideale perché mantiene il workflow delle PR: la correzione passa attraverso review e approvazione, proprio come qualsiasi altra modifica.
 
 > **Nota GitLab:** Su GitLab, il revert di una MR mergiata funziona nello stesso modo: un pulsante "Revert" sulla MR chiusa. Via CLI: `glab mr revert <id>`. I comandi Git (`git revert`, `git reset`, `git cherry-pick`) sono identici su entrambe le piattaforme.
 
 ---
 
-## 7.8 Cosa e' successo — dietro le quinte
+## 7.8 Cosa è successo — dietro le quinte
 
 Ricapitoliamo i tre strumenti:
 
@@ -335,12 +335,12 @@ flowchart TD
 
 ### I principi fondamentali
 
-- `git revert` e' il modo sicuro e collaborativo per annullare
-- `git reset` e' solo per lavoro locale non pushato
-- `git cherry-pick` e' come il copy-paste di un commit specifico
+- `git revert` è il modo sicuro e collaborativo per annullare
+- `git reset` è solo per lavoro locale non pushato
+- `git cherry-pick` è come il copy-paste di un commit specifico
 - Sui branch condivisi: **sempre revert, mai reset**
-- La storia deve dire la verita': "abbiamo sbagliato e abbiamo corretto"
-- Git e' progettato per essere **append-only** — ogni azione viene registrata
+- La storia deve dire la verità': "abbiamo sbagliato e abbiamo corretto"
+- Git è progettato per essere **append-only** — ogni azione viene registrata
 
 ---
 

@@ -22,7 +22,7 @@ Simone ha creato il repository `RistoranteAPI` nella lezione precedente. Ora vuo
 
 **Oppure tramite CLI:**
 
-> Se `gh` non e' installato, usa l'interfaccia web di GitHub (istruzioni sopra).
+> Se `gh` non è installato, usa l'interfaccia web di GitHub (istruzioni sopra).
 
 ```bash
 # Simone
@@ -38,7 +38,7 @@ GitHub Notification:
 [Accept invitation]
 ```
 
-Leonardo puo anche accettare da terminale:
+Leonardo può anche accettare da terminale:
 
 ```bash
 # Leonardo
@@ -58,7 +58,7 @@ Esistono due modelli principali di collaborazione su GitHub:
 
 Per questo corso usiamo il modello **collaborator**: Simone e Leonardo lavorano nello stesso repository, come farebbe un piccolo team di sviluppo.
 
-**Nota GitLab:** Su GitLab i collaboratori si aggiungono in Settings → Members (non "Collaborators"). I ruoli sono piu' granulari: Guest (sola lettura), Reporter (issue), Developer (push), Maintainer (merge su branch protetti), Owner (tutto). Per questo corso, il ruolo "Developer" e' l'equivalente di "Write" su GitHub.
+**Nota GitLab:** Su GitLab i collaboratori si aggiungono in Settings → Members (non "Collaborators"). I ruoli sono più granulari: Guest (sola lettura), Reporter (issue), Developer (push), Maintainer (merge su branch protetti), Owner (tutto). Per questo corso, il ruolo "Developer" è l'equivalente di "Write" su GitHub.
 
 ---
 
@@ -112,7 +112,7 @@ Output atteso:
 - I metadata del remote (chiamato automaticamente `origin`)
 - Imposta il branch attivo su `main` (il branch di default)
 
-Questo significa che Leonardo ha una copia completa e autonoma del repository. Puo lavorare offline, vedere la storia, creare branch.
+Questo significa che Leonardo ha una copia completa e autonoma del repository. Può lavorare offline, vedere la storia, creare branch.
 
 ---
 
@@ -148,14 +148,14 @@ Output atteso:
 * development
 ```
 
-Il simbolo `*` indica il branch attivo. Ora Leonardo e su `development`.
+Il simbolo `*` indica il branch attivo. Ora Leonardo è su `development`.
 
-**Perche lavoriamo su `development` e non su `main`:**
+**Perché lavoriamo su `development` e non su `main`:**
 
 - `main` rappresenta il codice stabile, pronto per la produzione
-- `development` e il branch dove il team integra le nuove funzionalita
+- `development` è il branch dove il team integra le nuove funzionalità
 - Nessuno lavora direttamente su `main`: ogni modifica passa prima da `development`
-- Questo pattern si chiama **GitHub Flow semplificato** ed e lo standard nei team piccoli
+- Questo pattern si chiama **GitHub Flow semplificato** ed è lo standard nei team piccoli
 
 ---
 
@@ -217,7 +217,7 @@ Stesso remote, stesso repository. Entrambi puntano a `origin` che e `SimoneRossi
 
 ---
 
-## 2.5 Cosa e' successo — dietro le quinte
+## 2.5 Cosa è successo — dietro le quinte
 
 ### Tempo: ~3 minuti
 
@@ -248,7 +248,7 @@ Leonardo: ~/progetti/RistoranteAPI       GitHub: LeonardoBianchi/RistoranteAPI
 - **Clone + Collaborator** — Stesso team, stessa azienda, fiducia reciproca
 - **Fork + Pull Request** — Open source, contributori esterni, code review obbligatoria
 
-**Nota GitLab:** Il concetto di fork esiste anche su GitLab ed e' identico. GitLab offre anche i **fork istantanei** per i progetti interni, che sono piu' veloci. Il clone e' identico: `git clone git@gitlab.com:SimoneRossi/RistoranteAPI.git`.
+**Nota GitLab:** Il concetto di fork esiste anche su GitLab ed è identico. GitLab offre anche i **fork istantanei** per i progetti interni, che sono più veloci. Il clone è identico: `git clone git@gitlab.com:SimoneRossi/RistoranteAPI.git`.
 
 ### Remote Tracking
 

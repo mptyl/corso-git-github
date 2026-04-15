@@ -14,11 +14,11 @@ La situazione attuale:
 
 - **Simone** ha mergiato le sue modifiche a `src/menu.md` in `development` (lezione 5)
 - **Leonardo** ha creato il suo branch `feature/02-piatti-speciali` **prima** del merge di Simone
-- Leonardo ha gia' aggiunto la ricetta dei ravioli a `src/ricette.md` (lezione 4)
+- Leonardo ha già aggiunto la ricetta dei ravioli a `src/ricette.md` (lezione 4)
 
 Fin qui nessun problema: Simone non ha toccato `ricette.md` nella sua PR. Ma ora **entrambi** vogliono modificare `ricette.md` — e lo faranno in punti diversi del file, aggiungendo contenuto nuovo.
 
-Questo e' il classico scenario che genera un **merge conflict**.
+Questo è il classico scenario che genera un **merge conflict**.
 
 ```
 Stato di ricette.md su development (dopo merge di Simone):
@@ -89,7 +89,7 @@ git push -u origin feature/03-ricette-dolci
 
 ## 6.3 Leonardo aggiorna la sua branch
 
-Leonardo lavora nel suo worktree `feature/02-piatti-speciali`, creato prima del merge di Simone. Ha gia' la ricetta dei ravioli. Ora vuole aggiungere anche una sezione antipasti:
+Leonardo lavora nel suo worktree `feature/02-piatti-speciali`, creato prima del merge di Simone. Ha già la ricetta dei ravioli. Ora vuole aggiungere anche una sezione antipasti:
 
 ```bash
 # Leonardo
@@ -128,7 +128,7 @@ git commit -m "feat: aggiunge ricetta bruschetta e aggiorna ravioli"
 git push -u origin feature/02-piatti-speciali
 ```
 
-Ora entrambi hanno modificato `ricette.md` in modi diversi. Il conflitto e' pronto.
+Ora entrambi hanno modificato `ricette.md` in modi diversi. Il conflitto è pronto.
 
 ---
 
@@ -143,7 +143,7 @@ gh pr create --base development --head feature/03-ricette-dolci \
   --body "Aggiunte ricette di Tiramisu e Panna Cotta"
 ```
 
-Questa PR si mergea senza problemi. Perche'? Perche' `development` non e' cambiato dall'ultima volta che Simone ha fatto pull — la branch di Leonardo non e' ancora stata mergiata.
+Questa PR si mergea senza problemi. Perché? Perché `development` non è cambiato dall'ultima volta che Simone ha fatto pull — la branch di Leonardo non è ancora stata mergiata.
 
 Leonardo fa la review:
 
@@ -159,7 +159,7 @@ E Simone mergea:
 gh pr merge 2 --merge
 ```
 
-Ora `development` contiene le ricette dolci. La prossima PR non sara' cosi' fortunata.
+Ora `development` contiene le ricette dolci. La prossima PR non sarà così fortunata.
 
 ---
 
@@ -180,13 +180,13 @@ GitHub mostra un messaggio rosso:
 This branch has conflicts that must be resolved
 ```
 
-**Perche?** Leonardo ha modificato `ricette.md` partendo da una versione che **non includeva** le ricette dolci di Simone. Nel frattempo, Simone ha mergiato la sua PR che aggiungeva contenuto alla fine dello stesso file. Git non sa quale versione tenere: entrambe hanno aggiunto righe nuove nella stessa zona del file.
+**Perché?** Leonardo ha modificato `ricette.md` partendo da una versione che **non includeva** le ricette dolci di Simone. Nel frattempo, Simone ha mergiato la sua PR che aggiungeva contenuto alla fine dello stesso file. Git non sa quale versione tenere: entrambe hanno aggiunto righe nuove nella stessa zona del file.
 
 Pensa a due autori che riscrivono lo stesso capitolo di un libro senza leggersi a vicenda. Quando l'editore deve unire le due versioni, deve decidere cosa tenere.
 
-E' importante capire che **il conflitto non e' un errore** — e' Git che ti dice: "Ho due versioni diverse dello stesso punto del file e non posso decidere da solo quale e' quella giusta."
+È importante capire che **il conflitto non è un errore** — è Git che ti dice: "Ho due versioni diverse dello stesso punto del file e non posso decidere da solo quale è quella giusta."
 
-> **Nota GitLab:** Su GitLab il conflitto viene segnalato nello stesso modo nella Merge Request. L'interfaccia web di GitLab offre un editor di conflitti integrato simile a quello di GitHub. La risoluzione locale con `git merge origin/development` e la modifica manuale dei conflict markers e' identica su entrambe le piattaforme — e' un'operazione di Git, non della piattaforma.
+> **Nota GitLab:** Su GitLab il conflitto viene segnalato nello stesso modo nella Merge Request. L'interfaccia web di GitLab offre un editor di conflitti integrato simile a quello di GitHub. La risoluzione locale con `git merge origin/development` e la modifica manuale dei conflict markers è identica su entrambe le piattaforme — è un'operazione di Git, non della piattaforma.
 
 ---
 
@@ -206,7 +206,7 @@ git fetch origin
 git merge origin/development
 ```
 
-Quando c'e' un conflitto, Antigravity evidenzia il file con un'icona di avvertimento nel Explorer. Cliccando sul file, Antigravity mostra un'interfaccia visiva per la risoluzione del conflitto con pulsanti: "Accept Current Change", "Accept Incoming Change", "Accept Both Changes". Per questo esercizio, scegliamo di risolvere manualmente per capire esattamente cosa sta succedendo. Nella pratica quotidiana, i pulsanti di Antigravity sono il modo piu' rapido per risolvere conflitti semplici.
+Quando c'e' un conflitto, Antigravity evidenzia il file con un'icona di avvertimento nel Explorer. Cliccando sul file, Antigravity mostra un'interfaccia visiva per la risoluzione del conflitto con pulsanti: "Accept Current Change", "Accept Incoming Change", "Accept Both Changes". Per questo esercizio, scegliamo di risolvere manualmente per capire esattamente cosa sta succedendo. Nella pratica quotidiana, i pulsanti di Antigravity sono il modo più rapido per risolvere conflitti semplici.
 
 Git segnala il conflitto:
 
@@ -244,7 +244,7 @@ Cosa significano i marker:
 |---|---|
 | `<<<<<<< HEAD` | Inizio delle **tue** modifiche (la versione di Leonardo) |
 | `=======` | Separatore — qui finiscono le tue modifiche |
-| `>>>>>>> origin/development` | Fine delle **loro** modifiche (la versione di Simone, gia' in development) |
+| `>>>>>>> origin/development` | Fine delle **loro** modifiche (la versione di Simone, già in development) |
 
 Leonardo risolve manualmente. La versione finale di `src/ricette.md` mantiene **tutte** le ricette:
 
@@ -282,13 +282,13 @@ git commit -m "merge: risolve conflitto ricette - mantiene tutte le ricette"
 git push
 ```
 
-Il `git add` dopo la risoluzione dice a Git: "Ho correttato il file, controlla che non ci siano piu' marker." Se restassero marker nel file, Git rifiuterebbe il commit.
+Il `git add` dopo la risoluzione dice a Git: "Ho correttato il file, controlla che non ci siano più marker." Se restassero marker nel file, Git rifiuterebbe il commit.
 
 ---
 
 ## 6.7 La PR viene mergeata
 
-Ora che il conflitto e' risolto, la PR puo' essere mergiata. Simone fa la review:
+Ora che il conflitto è risolto, la PR può essere mergiata. Simone fa la review:
 
 ```bash
 # Simone (reviewer)
@@ -302,7 +302,7 @@ Leonardo mergea:
 gh pr merge 3 --merge
 ```
 
-GitHub mostra "Pull request successfully merged" — e questa volta senza sorprese, perche' il conflitto e' gia' stato risolto localmente.
+GitHub mostra "Pull request successfully merged" — e questa volta senza sorprese, perché il conflitto è già stato risolto localmente.
 
 ---
 
@@ -331,7 +331,7 @@ L'output mostra la storia completa con i due merge e il commit di risoluzione:
 * aab1234 feat: aggiorna menu con nuove sezioni e piatti
 ```
 
-Pulizia dei worktree — il lavoro e' finito:
+Pulizia dei worktree — il lavoro è finito:
 
 ```bash
 # Leonardo
@@ -357,18 +357,18 @@ Output atteso — solo il worktree principale:
 
 ---
 
-## 6.9 Cosa e' successo — dietro le quinte
+## 6.9 Cosa è successo — dietro le quinte
 
-Il conflitto e' avvenuto perche' **entrambi gli sviluppatori hanno modificato lo stesso file** in posizioni sovrapposte. Git ha provato a fare un merge automatico, ma non poteva decidere quali righe tenere.
+Il conflitto è avvenuto perché **entrambi gli sviluppatori hanno modificato lo stesso file** in posizioni sovrapposte. Git ha provato a fare un merge automatico, ma non poteva decidere quali righe tenere.
 
-Ecco cosa e' successo tecnicamente:
+Ecco cosa è successo tecnicamente:
 
 1. `git merge origin/development` ha portato i commit di `development` dentro la branch di Leonardo
 2. Git ha trovato che `ricette.md` era stato modificato da entrambe le parti nella stessa zona
 3. Invece di scegliere arbitrariamente, Git ha inserito i **conflict markers** — testo letterale nel file
-4. I marker sono testo reale nel file: finche' restano, il file e' in uno stato non valido
+4. I marker sono testo reale nel file: finché restano, il file è in uno stato non valido
 5. La risoluzione consiste nell'editare il file, rimuovere i marker e scegliere il contenuto finale
-6. `git add` segnala a Git che il conflitto e' risolto
+6. `git add` segnala a Git che il conflitto è risolto
 7. `git commit` crea un **merge commit** con due genitori
 
 ### Come prevenire i conflitti
@@ -392,10 +392,10 @@ git merge origin/development
          │    Git riesce a combinare le modifiche da solo
          │
           └──► Conflitto (richiede intervento manuale)
-               Git non puo' decidere: modifica il file e committa
+               Git non può decidere: modifica il file e committa
 ```
 
-> **Nota GitLab:** I conflitti di merge sono gestiti da Git, non dalla piattaforma. `git merge`, i conflict markers, la risoluzione manuale — tutto e' identico. L'unica differenza e' come la piattaforma mostra il conflitto nell'interfaccia web prima del merge.
+> **Nota GitLab:** I conflitti di merge sono gestiti da Git, non dalla piattaforma. `git merge`, i conflict markers, la risoluzione manuale — tutto è identico. L'unica differenza è come la piattaforma mostra il conflitto nell'interfaccia web prima del merge.
 
 ---
 
@@ -407,7 +407,7 @@ git merge origin/development
 | `git worktree add <percorso> <branch>` | Crea un nuovo worktree |
 | `git fetch origin` | Scarica i dati dal remoto senza mergiare |
 | `git merge origin/development` | Porta le modifiche di development nel branch corrente |
-| `git add <file>` | Segnala che il conflitto e' risolto |
+| `git add <file>` | Segnala che il conflitto è risolto |
 | `git commit -m "merge: ..."` | Crea il merge commit dopo la risoluzione |
 | `git push` | Invia la risoluzione al remoto |
 | `gh pr create --base development --head <branch>` | Apre una Pull Request |

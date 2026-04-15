@@ -1,6 +1,6 @@
 # Lezione 1 — Simone crea il progetto RistoranteAPI
 
-**Obiettivo:** Creare il repository, impostare la struttura del progetto e la branch strategy
+**Obiettivo:** Creare il repository, impostare la struttura del progetto è la branch strategy
 
 **Tempo stimato:** 15 minuti
 
@@ -41,11 +41,11 @@ Cosa fa ogni flag:
 
 | Flag | Significato |
 |---|---|
-| `--public` | Il repository sara visibile a tutti |
+| `--public` | Il repository sarà visibile a tutti |
 | `--source=.` | Usa la cartella corrente come sorgente |
 | `--push` | Invia subito il contenuto locale al remote |
 
-Il comando `gh` e la **GitHub CLI**, uno strumento da terminale per interagire con GitHub senza aprire il browser.
+Il comando `gh` è la **GitHub CLI**, uno strumento da terminale per interagire con GitHub senza aprire il browser.
 
 > **Se `gh` non e installato:** Crea il repository dal browser:
 >
@@ -76,7 +76,7 @@ Simone crea la struttura delle cartelle e dei file:
 
 In Antigravity: crea la cartella `src` (tasto destro nel Explorer → New Folder).
 
-Il file `README.md` e la porta d'ingresso del progetto: chiunque visiti il repository su GitHub lo vede per primo.
+Il file `README.md` è la porta d'ingresso del progetto: chiunque visiti il repository su GitHub lo vede per primo.
 
 In Antigravity: crea il file `README.md` (tasto destro nel Explorer → New File) e inserisci il seguente contenuto:
 
@@ -152,7 +152,7 @@ git commit -m "Init: struttura progetto RistoranteAPI"
 git push origin main
 ```
 
-`git push` invia i commit locali al repository remoto su GitHub. `origin` e il nome predefinito del remote, `main` e il branch corrente.
+`git push` invia i commit locali al repository remoto su GitHub. `origin` è il nome predefinito del remote, `main` è il branch corrente.
 
 > **Alternativa con Antigravity:** Apri il pannello **Source Control** (`Ctrl+Shift+G`). Vedrai tutti i file modificati. Clicca `+` accanto a ogni file per stagearli, scrivi il messaggio di commit nella casella di testo e clicca `✓` per committare. Poi clicca **Sync Changes** per il push.
 
@@ -165,7 +165,7 @@ Simone vuole che il progetto abbia due branch principali:
 - **`main`** — codice production-ready, sempre stabile
 - **`development`** — branch di lavoro dove lui e Leonardo sperimentano
 
-Perche due branch separati? Perche lavorare direttamente su `main` e rischioso: un errore puo rompere il codice funzionante. Con `development` come branch di lavoro, `main` rimane sempre pulito.
+Perché due branch separati? Perché lavorare direttamente su `main` e rischioso: un errore può rompere il codice funzionante. Con `development` come branch di lavoro, `main` rimane sempre pulito.
 
 Simone crea il branch di sviluppo:
 
@@ -193,9 +193,9 @@ Su GitHub, Simone cambia il branch predefinito:
 2. In **Default branch**, cambia da `main` a `development`
 3. Conferma con **Update**
 
-Perche e utile? Quando qualcuno clona il repository, Git posiziona l'utente sul branch predefinito. Se il default e `development`, chi clona si trova subito sul branch di lavoro, senza rischio di modificare `main` per sbaglio. Inoltre, le Pull Request su GitHub vengono aperte automaticamente verso il branch predefinito.
+Perché e utile? Quando qualcuno clona il repository, Git posiziona l'utente sul branch predefinito. Se il default e `development`, chi clona si trova subito sul branch di lavoro, senza rischio di modificare `main` per sbaglio. Inoltre, le Pull Request su GitHub vengono aperte automaticamente verso il branch predefinito.
 
-> **Nota GitLab:** Su GitLab il branch predefinito si imposta in Settings → Repository → Default branch. Il procedimento e' identico. GitLab chiama "Merge Requests" quello che GitHub chiama "Pull Requests" — vedremo le differenze nella Lezione 5.
+> **Nota GitLab:** Su GitLab il branch predefinito si imposta in Settings → Repository → Default branch. Il procedimento è identico. GitLab chiama "Merge Requests" quello che GitHub chiama "Pull Requests" — vedremo le differenze nella Lezione 5.
 
 ---
 
@@ -205,7 +205,7 @@ Dietro la semplicita di questi comandi c'e molto che accade.
 
 ### Remote tracking branches
 
-Quando Simone ha fatto `git push -u origin development`, Git ha creato una connessione tra il branch locale `development` e il branch remoto `origin/development`. Questo permette a comandi come `git pull` e `git status` di sapere se il branch locale e avanti o indietro rispetto al remoto.
+Quando Simone ha fatto `git push -u origin development`, Git ha creato una connessione tra il branch locale `development` è il branch remoto `origin/development`. Questo permette a comandi come `git pull` e `git status` di sapere se il branch locale e avanti o indietro rispetto al remoto.
 
 Per vedere tutti i branch — locali e remoti:
 
@@ -213,7 +213,7 @@ Per vedere tutti i branch — locali e remoti:
 git branch -a
 ```
 
-L'output sara qualcosa del genere:
+L'output sarà qualcosa del genere:
 
 ```
 * development
@@ -237,7 +237,7 @@ origin  git@github.com:SimoneRossi/RistoranteAPI.git (fetch)
 origin  git@github.com:SimoneRossi/RistoranteAPI.git (push)
 ```
 
-`(fetch)` e l'URL usato per scaricare dati (`git pull`, `git fetch`), `(push)` e l'URL usato per inviarli (`git push`).
+`(fetch)` è l'URL usato per scaricare dati (`git pull`, `git fetch`), `(push)` è l'URL usato per inviarli (`git push`).
 
 ---
 

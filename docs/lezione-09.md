@@ -6,11 +6,11 @@
 
 ---
 
-## 9.1 Perche' la documentazione?
+## 9.1 Perché la documentazione?
 
-Un progetto senza documentazione e' un **progetto morto**. Chiunque arrivi dopo — un nuovo sviluppatore, un collaboratore, o te stesso tra sei mesi — deve poter capire cosa fa il progetto, come e' strutturato e come contribuire.
+Un progetto senza documentazione è un **progetto morto**. Chiunque arrivi dopo — un nuovo sviluppatore, un collaboratore, o te stesso tra sei mesi — deve poter capire cosa fa il progetto, come è strutturato e come contribuire.
 
-La documentazione non e' un extra: fa parte del codice. Se non e' scritta, e' come se non esistesse.
+La documentazione non è un extra: fa parte del codice. Se non è scritta, è come se non esistesse.
 
 Per pubblicarla usiamo due strumenti:
 
@@ -239,17 +239,17 @@ Ogni sezione ha un ruolo:
 
 | Sezione | Cosa fa |
 |---|---|
-| `site_name` | Il nome del sito — appare nell'intestazione e nel titolo della pagina |
+| `site_name` | Il nome del sito — appare nell'intestazione è nel titolo della pagina |
 | `site_description` | La descrizione — usata nei metadati HTML |
 | `site_author` | Gli autori — appare nel footer |
-| `theme.name: material` | Usa **MkDocs Material** — il tema piu' diffuso per documentazione tecnica |
+| `theme.name: material` | Usa **MkDocs Material** — il tema più diffuso per documentazione tecnica |
 | `theme.language: it` | Interfaccia del tema in italiano |
-| `theme.palette` | Colori primario e di accento |
+| `theme.palette` | Colori primario è di accento |
 | `theme.features` | Navigazione a tab, sezioni, pulsante "torna su" |
 | `nav` | La struttura del menu laterale — definisce l'ordine delle pagine |
 | `markdown_extensions` | Estensioni: admonition (box evidenziati), codehilite (syntax highlighting), toc (indice con link permanenti) |
 
-La sezione `nav` e' quella che mappa i file Markdown alle voci del menu. Se non la specifichi, MkDocs rileva automaticamente i file, ma definirla esplicitamente ti da' pieno controllo sull'ordine e sulla gerarchia.
+La sezione `nav` è quella che mappa i file Markdown alle voci del menu. Se non la specifichi, MkDocs rileva automaticamente i file, ma definirla esplicitamente ti da' pieno controllo sull'ordine è sulla gerarchia.
 
 ---
 
@@ -288,13 +288,13 @@ gh pr review 6 --approve --body "Documentazione completa e ben strutturata. Appr
 gh pr merge 6 --merge
 ```
 
-La PR #6 viene approvata e mergiata. La documentazione e' ora su `development`.
+La PR #6 viene approvata e mergiata. La documentazione è ora su `development`.
 
 ---
 
 ## 9.6 Abilitare GitHub Pages con GitHub Actions
 
-La documentazione e' nel repository, ma non e' ancora pubblica. Simone abilita GitHub Pages.
+La documentazione è nel repository, ma non è ancora pubblica. Simone abilita GitHub Pages.
 
 ### Configurazione su GitHub
 
@@ -307,7 +307,7 @@ Questo dice a GitHub: "Non cercare un branch con i file HTML. Usa un workflow pe
 
 Simone crea il file `.github/workflows/pages.yml`.
 
-In Antigravity: crea la struttura di cartelle `.github/workflows/` (New Folder due volte) e il file `pages.yml` (New File). Inserisci:
+In Antigravity: crea la struttura di cartelle `.github/workflows/` (New Folder due volte) è il file `pages.yml` (New File). Inserisci:
 
 > Nota: `.github` inizia con un punto. Su Linux le cartelle con punto iniziale sono native — nessun problema.
 
@@ -370,11 +370,11 @@ jobs:
 >   only:
 >     - main
 > ```
-> GitLab Pages e' gratuito su gitlab.com ma richiede che il progetto sia visibile (public o, su self-hosted, accessibile). L'URL sara' `https://username.gitlab.io/reponame/`.
+> GitLab Pages è gratuito su gitlab.com ma richiede che il progetto sia visibile (public o, su self-hosted, accessibile). L'URL sarà `https://username.gitlab.io/reponame/`.
 
 ### Cosa fa ogni parte
 
-**GitHub Actions** e' un sistema CI/CD integrato in GitHub. Esegue automaticamente dei workflow — sequenze di comandi — in risposta a eventi come push, PR, o trigger manuali.
+**GitHub Actions** è un sistema CI/CD integrato in GitHub. Esegue automaticamente dei workflow — sequenze di comandi — in risposta a eventi come push, PR, o trigger manuali.
 
 Il workflow si attiva:
 
@@ -399,13 +399,13 @@ I due job funzionano in sequenza:
 2. Lo pubblica su GitHub Pages usando `actions/deploy-pages@v4`
 3. Genera l'URL del sito
 
-La sezione `concurrency` assicura che un solo deploy giri alla volta — se un nuovo push arriva mentre un deploy e' in corso, il secondo aspetta.
+La sezione `concurrency` assicura che un solo deploy giri alla volta — se un nuovo push arriva mentre un deploy è in corso, il secondo aspetta.
 
 ---
 
 ## 9.7 Mergiare su main per pubblicare
 
-La documentazione e' su `development`, ma GitHub Pages si attiva solo con i push su `main`. Serve un merge.
+La documentazione è su `development`, ma GitHub Pages si attiva solo con i push su `main`. Serve un merge.
 
 Prima di procedere, Simone verifica che Python sia disponibile per MkDocs:
 
@@ -413,7 +413,7 @@ Prima di procedere, Simone verifica che Python sia disponibile per MkDocs:
 python3 --version
 ```
 
-Se il comando restituisce una versione (es. `Python 3.12.x`), l'ambiente e' pronto. MkDocs e le sue dipendenze vengono installate automaticamente dal workflow GitHub Actions, quindi non serve installare nulla localmente.
+Se il comando restituisce una versione (es. `Python 3.12.x`), l'ambiente è pronto. MkDocs e le sue dipendenze vengono installate automaticamente dal workflow GitHub Actions, quindi non serve installare nulla localmente.
 
 Poi Simone porta `development` su `main`:
 
@@ -426,13 +426,13 @@ git merge development
 git push origin main
 ```
 
-Il push su `main` fa partire il workflow GitHub Actions. Simone puo' monitorarlo:
+Il push su `main` fa partire il workflow GitHub Actions. Simone può monitorarlo:
 
 1. Andare su **github.com/simone/RistoranteAPI/actions**
 2. Vedra' il workflow "Deploy MkDocs to GitHub Pages" con indicatore giallo (in esecuzione)
 3. Dopo 1-2 minuti, l'indicatore diventa verde (completato)
 
-Il sito e' live all'URL:
+Il sito è live all'URL:
 
 ```
 https://simonerossi.github.io/RistoranteAPI/
@@ -449,7 +449,7 @@ Simone apre il browser e visita l'URL. Verifica che:
 - La home page si carica con il titolo "RistoranteAPI"
 - La navigazione laterale mostra tutte le sezioni (Piatti, Menu, Ricette, Contribuire)
 - I link tra le pagine funzionano
-- Il tema Material e' applicato correttamente (colori, font, layout)
+- Il tema Material è applicato correttamente (colori, font, layout)
 - Il pulsante "torna su" funziona (configurato in `theme.features`)
 
 Poi torna su GitHub:
@@ -461,7 +461,7 @@ Se qualcosa non funziona, il tab Actions mostra i log dettagliati di ogni step, 
 
 ---
 
-## 9.9 Cosa e' successo — dietro le quinte
+## 9.9 Cosa è successo — dietro le quinte
 
 Il processo completo, dal Markdown al sito pubblicato:
 
@@ -480,7 +480,7 @@ Ogni pezzo ha un ruolo:
 | `.github/workflows/pages.yml` | L'automazione — ricostruisce il sito ad ogni push su `main` |
 | GitHub Pages | L'hosting — serve i file HTML al pubblico, gratuitamente |
 
-Il flusso automatizzato e' il punto chiave: non devi mai costruire o caricare il sito manualmente. Ogni volta che qualcuno pusha su `main`, GitHub Actions ricostruisce il sito dal Markdown aggiornato e lo pubblica. La documentazione e' sempre sincronizzata con il codice.
+Il flusso automatizzato è il punto chiave: non devi mai costruire o caricare il sito manualmente. Ogni volta che qualcuno pusha su `main`, GitHub Actions ricostruisce il sito dal Markdown aggiornato è lo pubblica. La documentazione è sempre sincronizzata con il codice.
 
 Se domani Leonardo aggiunge una pagina, deve solo:
 
@@ -491,7 +491,7 @@ Se domani Leonardo aggiunge una pagina, deve solo:
 
 Il sito si aggiorna da solo.
 
-> **Nota GitLab:** Il processo completo e' lo stesso (Markdown → build → HTML → hosting), ma:
+> **Nota GitLab:** Il processo completo è lo stesso (Markdown → build → HTML → hosting), ma:
 > - **CI/CD**: `.gitlab-ci.yml` invece di `.github/workflows/pages.yml`
 > - **Directory di output**: `public/` invece di `site/`
 > - **Nome job**: deve essere `pages` (obbligatorio su GitLab)
@@ -518,7 +518,7 @@ Leonardo fa `git clone` e diventa collaboratore. Entrambi lavorano sullo stesso 
 
 ### Lezione 3-4 — Worktree per lavoro isolato
 
-`git worktree` permette di lavorare su piu' branch contemporaneamente, ognuno nella propria directory. Niente piu' `git stash` per cambiare contesto. Simone e Leonardo lavorano su feature diverse senza interferire.
+`git worktree` permette di lavorare su più branch contemporaneamente, ognuno nella propria directory. Niente più `git stash` per cambiare contesto. Simone e Leonardo lavorano su feature diverse senza interferire.
 
 ### Lezione 5 — Pull Request e code review
 
@@ -526,7 +526,7 @@ Le PR sono il cuore della collaborazione su GitHub. Flusso: branch feature → P
 
 ### Lezione 6 — Risoluzione conflitti
 
-Quando due sviluppatori modificano le stesse righe, Git non puo' decidere da solo. La risoluzione dei conflitti e' un merge manuale: si scelgono le modifiche corrette, si committa e si prosegue.
+Quando due sviluppatori modificano le stesse righe, Git non può decidere da solo. La risoluzione dei conflitti è un merge manuale: si scelgono le modifiche corrette, si committa e si prosegue.
 
 ### Lezione 7 — Rollback (revert, reset, cherry-pick)
 
@@ -534,11 +534,11 @@ Gli errori capitano. `git revert` annulla un commit creandone uno nuovo. `git re
 
 ### Lezione 8 — Hotfix di produzione
 
-Un bug critico in produzione non puo' aspettare il flusso normale. L'hotfix parte da `main`, viene fixato, mergiato su `main`, e backportato su `development`. Flusso inverso rispetto al normale.
+Un bug critico in produzione non può aspettare il flusso normale. L'hotfix parte da `main`, viene fixato, mergiato su `main`, e backportato su `development`. Flusso inverso rispetto al normale.
 
 ### Lezione 9 — Documentazione e GitHub Pages
 
-La documentazione e' parte del progetto. MkDocs trasforma Markdown in un sito professionale. GitHub Actions automatizza la pubblicazione. Il sito si aggiorna ad ogni push su `main`.
+La documentazione è parte del progetto. MkDocs trasforma Markdown in un sito professionale. GitHub Actions automatizza la pubblicazione. Il sito si aggiorna ad ogni push su `main`.
 
 ---
 
@@ -632,4 +632,4 @@ I comandi Git essenziali che hai imparato:
 | | `git push origin --delete <nome>` | Elimina branch remoto |
 | | `git fetch --prune` | Pulisce riferimenti remoti obsoleti |
 
-La regola d'oro: **commit spesso, push regolarmente, fai PR per ogni modifica significativa**. Git non e' solo uno strumento tecnico — e' il modo in cui un team comunica e collabora attraverso il codice.
+La regola d'oro: **commit spesso, push regolarmente, fai PR per ogni modifica significativa**. Git non è solo uno strumento tecnico — è il modo in cui un team comunica e collabora attraverso il codice.

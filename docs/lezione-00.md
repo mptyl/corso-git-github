@@ -26,9 +26,9 @@ Due cose diverse che spesso vengono confuse:
 | **Serve a** | Tenere traccia delle modifiche al codice | Condividere codice e collaborare con altri |
 | **Serve internet?** | No | Si |
 
-**L'analogia giusta:** Git e come un salvataggio locale dei videogiochi — lo fai sul tuo computer e non serve internet. GitHub e come il cloud dove condividi quei salvataggi con altri giocatori.
+**L'analogia giusta:** Git è come un salvataggio locale dei videogiochi — lo fai sul tuo computer e non serve internet. GitHub è come il cloud dove condividi quei salvataggi con altri giocatori.
 
-Git nasce nel 2005 da Linus Torvalds (lo stesso creatore di Linux). GitHub nasce nel 2008 come piattaforma per ospitare repository Git. Oggi GitHub appartiene a Microsoft ed e il servizio piu usato al mondo per collaborare su codice.
+Git nasce nel 2005 da Linus Torvalds (lo stesso creatore di Linux). GitHub nasce nel 2008 come piattaforma per ospitare repository Git. Oggi GitHub appartiene a Microsoft ed è il servizio più usato al mondo per collaborare su codice.
 
 ```
 Git (locale)           GitHub (remoto)
@@ -43,17 +43,17 @@ Git (locale)           GitHub (remoto)
 
 **Regola pratica:** Tutto quello che fai con `git` funziona offline. Tutto quello che coinvolge `github` (push, pull, PR) richiede connessione.
 
-> **Nota GitLab:** Esiste anche **GitLab**, un'alternativa a GitHub. GitLab offre le stesse funzionalita' di base (repository, MR, CI/CD) ma e' open source e puo' essere installato on-premise. I concetti di Git (commit, branch, merge) sono identici su entrambe le piattaforme.
+> **Nota GitLab:** Esiste anche **GitLab**, un'alternativa a GitHub. GitLab offre le stesse funzionalità di base (repository, MR, CI/CD) ma è open source e può essere installato on-premise. I concetti di Git (commit, branch, merge) sono identici su entrambe le piattaforme.
 
 ---
 
 ## 0.2 Antigravity e la connessione Remote-SSH
 
-**Antigravity** e un IDE derivato da VS Code. Simone e Leonardo lo usano per scrivere codice, eseguire comandi e interagire con Git — ma non lavorano sul PC locale. Lavorano su un **server Linux** remoto, collegandosi tramite **Remote-SSH**.
+**Antigravity** è un IDE derivato da VS Code. Simone e Leonardo lo usano per scrivere codice, eseguire comandi e interagire con Git — ma non lavorano sul PC locale. Lavorano su un **server Linux** remoto, collegandosi tramite **Remote-SSH**.
 
 ### Come funziona Remote-SSH
 
-Remote-SSH e un meccanismo di VS Code (e quindi anche di Antigravity) che permette di lavorare su un server remoto come se fosse il tuo computer locale:
+Remote-SSH è un meccanismo di VS Code (e quindi anche di Antigravity) che permette di lavorare su un server remoto come se fosse il tuo computer locale:
 
 1. Antigravity apre una connessione SSH verso il server Linux
 2. Sul server viene installato automaticamente un piccolo "VS Code Server"
@@ -71,13 +71,13 @@ In Antigravity:
 
 Una volta connessi:
 
-- Il **terminale integrato** (`View → Terminal` oppure `Ctrl+``) e un **bash sul server Linux**
+- Il **terminale integrato** (`View → Terminal` oppure `Ctrl+``) è un **bash sul server Linux**
 - Il **File Explorer** mostra il filesystem del server (es. `/home/simone/`)
 - Il **Pannello Source Control** (`Ctrl+Shift+G`) funziona sul repository remoto
 
 ### Importante
 
-Antigravity **NON e un sostituto di Git** — e un'interfaccia che rende Git piu accessibile. Sotto il cofano usa gli stessi comandi `git` che impareremo nel corso.
+Antigravity **NON è un sostituto di Git** — è un'interfaccia che rende Git più accessibile. Sotto il cofano usa gli stessi comandi `git` che impareremo nel corso.
 
 ### Da terminale vs da Antigravity UI
 
@@ -95,7 +95,7 @@ Durante il corso impareremo sia i comandi Git da terminale sia come fare le stes
 
 ## 0.3 Configurazione Git
 
-Git e gia preinstallato sul server Linux. Ma deve sapere chi sei. Ogni commit porta il tuo nome e la tua email.
+Git è già preinstallato sul server Linux. Ma deve sapere chi sei. Ogni commit porta il tuo nome e la tua email.
 
 ```bash
 # Simone
@@ -138,19 +138,19 @@ Se preferisci usare Antigravity come editor per i commit:
 git config --global core.editor "antigravity --wait"
 ```
 
-Il flag `--wait` e fondamentale: dice al terminale di aspettare che tu chiuda il file in Antigravity prima di proseguire. Senza `--wait`, il commit partirebbe con un file vuoto e verrebbe annullato.
+Il flag `--wait` è fondamentale: dice al terminale di aspettare che tu chiuda il file in Antigravity prima di proseguire. Senza `--wait`, il commit partirebbe con un file vuoto e verrebbe annullato.
 
 ```bash
 git config --global color.ui auto
 ```
 
-Aggiunge colore all'output di comandi come `git status`, `git log`, `git diff`. Per esempio i file modificati appaiono in rosso, quelli in staging in verde. Utile per leggere piu velocemente lo stato del repository. Su terminali moderni e quasi sempre gia attivo di default, ma non costa nulla assicurarsene.
+Aggiunge colore all'output di comandi come `git status`, `git log`, `git diff`. Per esempio i file modificati appaiono in rosso, quelli in staging in verde. Utile per leggere più velocemente lo stato del repository. Su terminali moderni è quasi sempre già attivo di default, ma non costa nulla assicurarsene.
 
 ```bash
 git config --global init.defaultBranch main
 ```
 
-Quando crei un nuovo repository con `git init`, Git crea il primo branch. Storicamente si chiamava `master`; dal 2020 il nome raccomandato e `main`. Questo comando assicura che ogni nuovo repository usi `main` come branch iniziale, evitando confusione con repository piu vecchi che usano ancora `master`.
+Quando crei un nuovo repository con `git init`, Git crea il primo branch. Storicamente si chiamava `master`; dal 2020 il nome raccomandato e `main`. Questo comando assicura che ogni nuovo repository usi `main` come branch iniziale, evitando confusione con repository più vecchi che usano ancora `master`.
 
 ---
 
@@ -173,7 +173,7 @@ ssh-keygen -t ed25519 -C "leonardo.porcacchia@uni.com"
 Quando chiede dove salvare, premi **Invio** per accettare il default. La chiave viene salvata nella home dell'utente corrente: Simone troverà `/home/simone/.ssh/id_ed25519`, Leonardo troverà `/home/leonardo/.ssh/id_ed25519`. Le due chiavi sono completamente indipendenti — ogni utente ha la propria cartella `.ssh/`.
 
 Quando chiede la passphrase:
-- **Per il corso:** premi Invio due volte (nessuna passphrase, piu comodo)
+- **Per il corso:** premi Invio due volte (nessuna passphrase, più comodo)
 - **Per la produzione:** inserisci una passphrase sicura
 
 ### Copiare la chiave pubblica
@@ -182,7 +182,7 @@ Quando chiede la passphrase:
 cat ~/.ssh/id_ed25519.pub
 ```
 
-L'output sara qualcosa del genere:
+L'output sarà qualcosa del genere:
 
 ```
 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAI... simone.mezzabotta@uni.com
@@ -213,15 +213,15 @@ Se tutto funziona, vedrai:
 Hi username! You've successfully authenticated, but GitHub does not provide shell access.
 ```
 
-Se e la prima volta che ti connetti, Git chiedera di confermare il fingerprint. Rispondi `yes`.
+Se è la prima volta che ti connetti, Git chiedera di confermare il fingerprint. Rispondi `yes`.
 
-> **Nota GitLab:** Su GitLab il procedimento e' identico: Settings → SSH Keys → Add key. L'URL del remote sara' `git@gitlab.com:username/repo.git` invece di `git@github.com:username/repo.git`.
+> **Nota GitLab:** Su GitLab il procedimento è identico: Settings → SSH Keys → Add key. L'URL del remote sarà `git@gitlab.com:username/repo.git` invece di `git@github.com:username/repo.git`.
 
 ---
 
 ## 0.5 GitHub CLI (`gh`)
 
-La GitHub CLI e lo strumento da riga di comando ufficiale di GitHub. Permette di gestire PR, issue e repository direttamente dal terminale.
+La GitHub CLI è lo strumento da riga di comando ufficiale di GitHub. Permette di gestire PR, issue e repository direttamente dal terminale.
 
 ### Installazione su Linux
 

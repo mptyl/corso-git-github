@@ -8,9 +8,9 @@
 
 ## 8.1 Lo scenario: bug critico in produzione
 
-Un cliente del ristorante segnala che sul menu online mancano le informazioni sugli allergeni. In Italia questo e' un **requisito di legge** — il ristorante rischia una multa.
+Un cliente del ristorante segnala che sul menu online mancano le informazioni sugli allergeni. In Italia questo è un **requisito di legge** — il ristorante rischia una multa.
 
-Il problema e' su `main`, il branch di produzione. Non possiamo aspettare il normale ciclo di sviluppo: il menu e' gia' pubblico e ogni ora senza allergeni e' un rischio.
+Il problema è su `main`, il branch di produzione. Non possiamo aspettare il normale ciclo di sviluppo: il menu è già pubblico e ogni ora senza allergeni è un rischio.
 
 Serve un **hotfix**: un fix rapido applicato direttamente su `main`, senza passare da `development`.
 
@@ -31,10 +31,10 @@ main ─────────────────────────
 
 Due regole fondamentali:
 
-1. **L'hotfix branch parte da `main`** — non da `development`. Il bug e' in produzione e va fixato li.
+1. **L'hotfix branch parte da `main`** — non da `development`. Il bug è in produzione e va fixato li.
 2. **Dopo il fix, merge su `main` E backport su `development`** — altrimenti il prossimo deploy sovrascrive il fix.
 
-Il flusso normale e' `feature → development → main`. L'hotfix va nella direzione opposta: `main → development`. Per questo e' un'eccezione controllata.
+Il flusso normale è `feature → development → main`. L'hotfix va nella direzione opposta: `main → development`. Per questo è un'eccezione controllata.
 
 ---
 
@@ -42,7 +42,7 @@ Il flusso normale e' `feature → development → main`. L'hotfix va nella direz
 
 Simone sta lavorando su una feature nel suo worktree sul server Linux. Deve cambiare contesto rapidamente senza abbandonare il lavoro corrente.
 
-Il worktree e' perfetto qui: crea una directory separata per l'hotfix senza toccare il worktree della feature. Simone usa Antigravity IDE collegato al server via Remote-SSH.
+Il worktree è perfetto qui: crea una directory separata per l'hotfix senza toccare il worktree della feature. Simone usa Antigravity IDE collegato al server via Remote-SSH.
 
 ```bash
 # Simone
@@ -82,7 +82,7 @@ Verifica di essere basato su `main`:
 git log --oneline -3
 ```
 
-L'output deve mostrare i commit di `main`, non quelli di `development`. Questo conferma che l'hotfix e' nato dal branch giusto.
+L'output deve mostrare i commit di `main`, non quelli di `development`. Questo conferma che l'hotfix è nato dal branch giusto.
 
 ---
 
@@ -126,13 +126,13 @@ git commit -m "hotfix: aggiunge informazioni allergeni al menu"
 git push -u origin hotfix/fix-allergeni
 ```
 
-Il messaggio di commit inizia con `hotfix:` — questa e' la convenzione per distinguere i fix urgenti dai commit normali.
+Il messaggio di commit inizia con `hotfix:` — questa è la convenzione per distinguere i fix urgenti dai commit normali.
 
 ---
 
 ## 8.5 PR diretta su main
 
-L'hotfix bypassa `development` e va direttamente su `main`. Questo e' l'unico caso in cui una PR non segue il flusso `feature → development → main`.
+L'hotfix bypassa `development` e va direttamente su `main`. Questo è l'unico caso in cui una PR non segue il flusso `feature → development → main`.
 
 ```bash
 # Simone
@@ -149,7 +149,7 @@ Un cliente ha segnalato la mancanza di allergeni sul menu.
 - [x] Verificato tutti gli allergeni corretti"
 ```
 
-> **Nota:** se `gh` non e' installato sul server, crea la PR dalla web UI di GitHub: vai su **Pull Requests** → **New pull request** → imposta base `main` e compare `hotfix/fix-allergeni`.
+> **Nota:** se `gh` non è installato sul server, crea la PR dalla web UI di GitHub: vai su **Pull Requests** → **New pull request** → imposta base `main` e compare `hotfix/fix-allergeni`.
 
 Leonardo riceve la notifica e revisiona velocemente:
 
@@ -165,9 +165,9 @@ Simone effettua il merge:
 gh pr merge 5 --merge
 ```
 
-Il fix e' ora su `main`. Il menu in produzione mostra gli allergeni. Ma `development` e' ancora indietro.
+Il fix è ora su `main`. Il menu in produzione mostra gli allergeni. Ma `development` è ancora indietro.
 
-> **Nota GitLab:** Su GitLab la Merge Request per l'hotfix si crea nello stesso modo: `glab mr create --target-branch main --source-branch hotfix/fix-allergeni`. L'hotfix bypass il branch di sviluppo e va direttamente su main — il concetto e' identico.
+> **Nota GitLab:** Su GitLab la Merge Request per l'hotfix si crea nello stesso modo: `glab mr create --target-branch main --source-branch hotfix/fix-allergeni`. L'hotfix bypass il branch di sviluppo e va direttamente su main — il concetto è identico.
 
 ---
 
@@ -175,7 +175,7 @@ Il fix e' ora su `main`. Il menu in produzione mostra gli allergeni. Ma `develop
 
 Se non backportiamo il fix, il prossimo merge da `development` verso `main` sovrascriverebbe le modifiche. `development` deve ricevere lo stesso commit.
 
-Il flusso e' inverso rispetto al normale: invece di mergiare `development` in `main`, mergiamo `main` in `development`.
+Il flusso è inverso rispetto al normale: invece di mergiare `development` in `main`, mergiamo `main` in `development`.
 
 ```bash
 # Simone
@@ -194,7 +194,7 @@ git log --oneline --graph -5
 
 L'output mostra un merge commit che porta il contenuto di `main` dentro `development`. Ora i due branch sono sincronizzati su questo fix.
 
-Il concetto chiave: **normalmente le feature fluiscono da `dev` verso `main`**. Gli hotfix fluiscono nella direzione opposta: da `main` verso `dev`. Questo e' il backport.
+Il concetto chiave: **normalmente le feature fluiscono da `dev` verso `main`**. Gli hotfix fluiscono nella direzione opposta: da `main` verso `dev`. Questo è il backport.
 
 ---
 
@@ -215,13 +215,13 @@ git branch -d hotfix/fix-allergeni
 | `git fetch --prune` | Rimuove i riferimenti a branch remoti cancellati |
 | `git branch -d` | Elimina il branch locale |
 
-La scrivania dell'hotfix e' stata smontata. Simone torna al suo lavoro sulla feature.
+La scrivania dell'hotfix è stata smontata. Simone torna al suo lavoro sulla feature.
 
 ---
 
-## 8.8 Cosa e' successo — dietro le quinte
+## 8.8 Cosa è successo — dietro le quinte
 
-L'hotfix e' un workflow speciale per fix urgenti in produzione. Ecco le differenze rispetto al flusso normale:
+L'hotfix è un workflow speciale per fix urgenti in produzione. Ecco le differenze rispetto al flusso normale:
 
 | Aspetto | Flusso normale | Hotfix |
 |---|---|---|
@@ -238,11 +238,11 @@ git checkout development
 git cherry-pick abc1234
 ```
 
-Dove `abc1234` e' l'hash del commit dell'hotfix su `main`. Il cherry-pick e' utile quando `development` ha divergento molto da `main` e un merge completo sarebbe complesso.
+Dove `abc1234` è l'hash del commit dell'hotfix su `main`. Il cherry-pick è utile quando `development` ha divergento molto da `main` è un merge completo sarebbe complesso.
 
-**Su progetti reali** le PR di hotfix possono bypassare alcuni check CI o requisiti di review — ma solo con approvazione esplicita. L'urgenza non dovrebbe mai significare "salto la qualita'".
+**Su progetti reali** le PR di hotfix possono bypassare alcuni check CI o requisiti di review — ma solo con approvazione esplicita. L'urgenza non dovrebbe mai significare "salto la qualità'".
 
-> **Nota GitLab:** Il workflow di hotfix e' identico. GitLab permette anche di creare MR con **target multipli** in alcuni casi, ma il flusso main → backport su development e' lo stesso. L'uso di worktree per l'hotfix e' puramente Git e funziona identicamente.
+> **Nota GitLab:** Il workflow di hotfix è identico. GitLab permette anche di creare MR con **target multipli** in alcuni casi, ma il flusso main → backport su development è lo stesso. L'uso di worktree per l'hotfix è puramente Git e funziona identicamente.
 
 ---
 

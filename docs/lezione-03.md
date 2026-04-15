@@ -6,7 +6,7 @@
 
 ---
 
-## 3.1 Perche' i worktree?
+## 3.1 Perché i worktree?
 
 Simone sta lavorando sul branch `development`. Deve iniziare una nuova feature ma vuole mantenere il branch di sviluppo pulito.
 
@@ -15,9 +15,9 @@ Simone sta lavorando sul branch `development`. Deve iniziare una nuova feature m
 - `git stash` per salvare il lavoro corrente, poi `git checkout` sul nuovo branch — ma perde lo stato della working directory
 - `git checkout` diretto — rischiano di mescolare modifiche tra branch
 
-**Con worktree**: piu' working directory dallo stesso repository, ognuna su un branch diverso.
+**Con worktree**: più working directory dallo stesso repository, ognuna su un branch diverso.
 
-Pensa a un worktree come avere **piu' scrivanie**, ognuna con un progetto diverso aperto sopra. Lavori a una scrivania senza toccare le altre.
+Pensa a un worktree come avere **più scrivanie**, ognuna con un progetto diverso aperto sopra. Lavori a una scrivania senza toccare le altre.
 
 L'insight chiave: **tutti i worktree condividono lo stesso `.git/`** — stessa history, stessi objects. Nessuna duplicazione.
 
@@ -25,7 +25,7 @@ L'insight chiave: **tutti i worktree condividono lo stesso `.git/`** — stessa 
 
 ## 3.2 Simone crea il suo worktree
 
-Simone e' sul branch `development`:
+Simone è sul branch `development`:
 
 ```bash
 # Simone
@@ -131,7 +131,7 @@ Simone pubblica il branch su GitHub:
 git push -u origin feature/01-menu-giorno
 ```
 
-Su GitHub: Simone puo' vedere il nuovo branch nella sezione_branches del repository.
+Su GitHub: Simone può vedere il nuovo branch nella sezione_branches del repository.
 
 Verifica che il branch remoto esista:
 
@@ -147,7 +147,7 @@ origin/main
 origin/feature/01-menu-giorno
 ```
 
-> **Nota GitLab:** Il `git push` e il concetto di worktree sono identici su GitLab. Le differenze tra GitHub e GitLab riguardano solo l'interfaccia web e i comandi CLI (`glab` invece di `gh`), non Git stesso.
+> **Nota GitLab:** Il `git push` è il concetto di worktree sono identici su GitLab. Le differenze tra GitHub e GitLab riguardano solo l'interfaccia web e i comandi CLI (`glab` invece di `gh`), non Git stesso.
 
 ---
 
@@ -172,7 +172,7 @@ On branch development
 nothing to commit, working tree clean
 ```
 
-**Questo e' il vantaggio fondamentale**: il lavoro sulla feature e' completamente isolato. Il branch `development` e' pulito, senza file modificati, senza stash, senza confusione.
+**Questo è il vantaggio fondamentale**: il lavoro sulla feature è completamente isolato. Il branch `development` è pulito, senza file modificati, senza stash, senza confusione.
 
 ---
 
@@ -190,13 +190,13 @@ Rimuovere un worktree (lo faremo dopo il merge):
 git worktree remove ../RistoranteAPI-menu
 ```
 
-**Quando rimuovere**: dopo che il branch e' stato mergato. Il worktree ha fatto il suo lavoro — l'isolamento non serve piu'.
+**Quando rimuovere**: dopo che il branch è stato mergato. Il worktree ha fatto il suo lavoro — l'isolamento non serve più.
 
 **Regola importante**: NON puoi avere lo stesso branch checked out in due worktree diversi. Git lo vieterebbe.
 
 ---
 
-## 3.7 Cosa e' successo — dietro le quinte
+## 3.7 Cosa è successo — dietro le quinte
 
 I worktree condividono `.git/objects` e `.git/refs` — nessuna duplicazione di dati.
 
@@ -214,7 +214,7 @@ ls .git/worktrees/
 
 In Antigravity: puoi anche ispezionare la cartella `.git/worktrees/` dall'Explorer.
 
-La convenzione per i nomi dei branch e': `feature/NN-descrizione` dove `NN` e' un numero progressivo (01, 02, 03...). Questo mantiene ordinato il repository quando le feature si accumulano.
+La convenzione per i nomi dei branch è: `feature/NN-descrizione` dove `NN` è un numero progressivo (01, 02, 03...). Questo mantiene ordinato il repository quando le feature si accumulano.
 
 ---
 
