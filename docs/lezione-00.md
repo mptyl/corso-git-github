@@ -234,7 +234,23 @@ Se tutto funziona, vedrai:
 Hi username! You've successfully authenticated, but GitHub does not provide shell access.
 ```
 
-Se è la prima volta che ti connetti, Git chiedera di confermare il fingerprint. Rispondi `yes`.
+Se nel file `~/.ssh/known_hosts` non è ancora registrato il fingerprint di GitHub (cioè nessuno si è mai collegato a github.com via SSH da questo server), vedrai questo messaggio:
+
+```
+The authenticity of host 'github.com (140.82.121.3)' can't be established.
+ED25519 key fingerprint is SHA256:xxxx/yyyyyyyyyyyyyyyyy.
+Are you sure you want to continue connecting (yes/no/[fingerprint])?
+```
+
+Questo è un meccanismo di sicurezza di SSH: il tuo client non ha mai visto questo server e ti chiede di confermare che è davvero GitHub (e non qualcuno che si spaccia per GitHub). Il **fingerprint** è un'impronta digitale del server — puoi verificarlo sulla pagina ufficiale di GitHub all'indirizzo https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints.
+
+Digita `yes` e premi Invio. SSH memorizza il fingerprint in `~/.ssh/known_hosts`, quindi questo messaggio apparirà **solo la prima volta**. Le connessioni successive saranno automatiche.
+
+Subito dopo la conferma vedrai il messaggio di successo:
+
+```
+Hi username! You've successfully authenticated, but GitHub does not provide shell access.
+```
 
 > **Nota GitLab:** Su GitLab il procedimento è identico: Settings → SSH Keys → Add key. L'URL del remote sarà `git@gitlab.com:username/repo.git` invece di `git@github.com:username/repo.git`.
 
