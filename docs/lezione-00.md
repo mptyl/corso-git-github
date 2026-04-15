@@ -2,6 +2,27 @@
 
 **Obiettivo:** Setup completo dell'ambiente di lavoro | **Tempo stimato:** 15 minuti
 
+## Il corso in breve
+
+Questo corso insegna a usare **Git** e **GitHub** per collaborare su un progetto. Non richiede conoscenze di programmazione: lavoreremo esclusivamente con **file di testo puri** — documenti, elenchi, ricette — senza alcun riferimento a un linguaggio di programmazione o a un framework.
+
+Il corso è **pratico e basato su simulazione**: due persone — Simone e Leonardo — collaborano a un repository chiamato `RistoranteAPI`, che rappresenta la documentazione di un ristorante. Ogni lezione corrisponde a un passaggio reale del flusso di lavoro Git:
+
+- creare repository e branch
+- lavorare in parallelo con i worktree
+- aprire Pull Request e fare code review
+- risolvere conflitti di merge
+- gestire rollback e hotfix
+- pubblicare documentazione con MkDocs su GitHub Pages
+
+**L'ambiente di lavoro:**
+
+- **Server Linux** condiviso, accessibile tramite SSH. Simone e Leonardo hanno ciascuno il proprio account Linux sul server.
+- **Antigravity** — un IDE derivato da VS Code — usato come editor, collegato al server tramite **Remote-SSH**. Il PC locale serve solo per eseguire Antigravity; tutto il lavoro Git avviene sul server.
+- **Terminale bash** — lo strumento principale del corso. Ogni operazione Git viene mostrata come comando da terminale, con l'alternativa tramite l'interfaccia di Antigravity dove disponibile.
+
+Il focus è sui comandi `git` e `gh` (GitHub CLI). Alla fine di ogni lezione troverai una nota con le differenze rispetto a GitLab, per chi lavora su quella piattaforma.
+
 ---
 
 ## Indice
