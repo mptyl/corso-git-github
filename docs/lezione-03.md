@@ -192,6 +192,38 @@ git worktree remove ../RistoranteAPI-menu
 
 **Quando rimuovere**: dopo che il branch è stato mergato. Il worktree ha fatto il suo lavoro — l'isolamento non serve più.
 
+### Cosa succede quando rimuovi un worktree
+
+```bash
+git worktree remove ../RistoranteAPI-menu
+```
+
+Questo comando fa due cose:
+
+1. **Elimina la directory** `RistoranteAPI-menu/` e tutti i file al suo interno — i file sorgente, il virtualenv (`.venv/`), i file `.pyc`, tutto. La directory scompare dal disco e lo spazio viene liberato.
+2. **Rimuove i metadati** da `.git/worktrees/` — il puntatore HEAD, l'index e i riferimenti interni.
+
+La storia del repository **non viene toccata**: tutti i commit, i branch e i tag restano intatti in `.git/objects/`. Rimuovere un worktree non perde nessun dato Git — elimina solo la copia di lavoro su disco.
+
+Lo spazio liberato dipende da cosa conteneva il worktree:
+
+| Contenuto | Spazio liberato |
+|---|---|
+| File sorgente tracciati da Git | Pochi KB — file di testo |
+| Virtualenv (`.venv/`) | 50-500 MB — la parte più voluminosa |
+| `node_modules/` | 100-500 MB nei progetti Node.js |
+| File compilati (`__pycache__/`, `target/`) | Pochi MB |
+
+Nella maggior parte dei casi, **la parte grossa dello spazio è nelle dipendenze**, non nel codice sorgente. Se il worktree non aveva dipendenze installate, la rimozione libera pochissimo spazio — i file di testo pesano poco.
+
+**Se hai modifiche non committate** nel worktree, Git rifiuta la rimozione:
+
+```
+fatal: RistoranteAPI-menu contains modified or untracked files
+```
+
+In quel caso puoi forzare con `--force`, ma le modifiche non committate andranno perse. Meglio fare commit o stash prima di rimuovere.
+
 **Regola importante**: NON puoi avere lo stesso branch checked out in due worktree diversi. Git lo vieterebbe.
 
 ---

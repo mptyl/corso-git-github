@@ -211,7 +211,7 @@ git branch -d hotfix/fix-allergeni
 
 | Comando | Cosa fa |
 |---|---|
-| `git worktree remove` | Elimina la directory del worktree |
+| `git worktree remove` | Elimina la directory del worktree e libera lo spazio su disco |
 | `git fetch --prune` | Rimuove i riferimenti a branch remoti cancellati |
 | `git branch -d` | Elimina il branch locale |
 

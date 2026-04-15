@@ -376,7 +376,7 @@ Simone pulisce tutto — worktree, branch locale e branch remoto:
 git worktree remove ../RistoranteAPI-menu
 ```
 
-Rimuove la directory del worktree. I file fisici vengono eliminati.
+Rimuove la directory del worktree. I file fisici vengono eliminati e lo spazio su disco viene liberato — inclusi eventuali virtualenv o dipendenze installate nel worktree (vedi lezione 3 per i dettagli).
 
 ```bash
 # Simone
