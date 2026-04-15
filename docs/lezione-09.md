@@ -208,7 +208,7 @@ In Antigravity: tasto destro nella root del progetto (la cartella `RistoranteAPI
 ```yaml
 site_name: RistoranteAPI
 site_description: Sistema di gestione menu per il Ristorante Da Luigi
-site_author: Simone Mezzabotta & Leonardo Porcacchia
+site_author: Simone Rossi & Leonardo Bianchi
 
 theme:
   name: material

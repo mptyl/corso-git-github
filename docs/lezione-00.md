@@ -99,12 +99,12 @@ Git è già preinstallato sul server Linux. Ma deve sapere chi sei. Ogni commit 
 
 ```bash
 # Simone
-git config --global user.name "Simone Mezzabotta"
-git config --global user.email "simone.mezzabotta@uni.com"
+git config --global user.name "Simone Rossi"
+git config --global user.email "simone.rossi@acme.com"
 
 # Leonardo
-git config --global user.name "Leonardo Porcacchia"
-git config --global user.email "leonardo.porcacchia@uni.com"
+git config --global user.name "Leonardo Bianchi"
+git config --global user.email "leonardo.bianchi@acme.com"
 ```
 
 **Importante:** Usa la stessa email collegata al tuo account GitHub.
@@ -121,7 +121,7 @@ Cerca queste righe nell'output:
 
 ```
 user.name=Simone Rossi
-user.email=simone.mezzabotta@uni.com
+user.email=simone.rossi@acme.com
 ```
 
 ### Altre configurazioni utili
@@ -164,10 +164,10 @@ La chiave SSH ti permette di comunicare con GitHub **senza digitare la password 
 
 ```bash
 # Simone
-ssh-keygen -t ed25519 -C "simone.mezzabotta@uni.com"
+ssh-keygen -t ed25519 -C "simone.rossi@acme.com"
 
 # Leonardo
-ssh-keygen -t ed25519 -C "leonardo.porcacchia@uni.com"
+ssh-keygen -t ed25519 -C "leonardo.bianchi@acme.com"
 ```
 
 Quando chiede dove salvare, premi **Invio** per accettare il default. La chiave viene salvata nella home dell'utente corrente: Simone troverà `/home/simone/.ssh/id_ed25519`, Leonardo troverà `/home/leonardo/.ssh/id_ed25519`. Le due chiavi sono completamente indipendenti — ogni utente ha la propria cartella `.ssh/`.
@@ -185,7 +185,7 @@ cat ~/.ssh/id_ed25519.pub
 L'output sarà qualcosa del genere:
 
 ```
-ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAI... simone.mezzabotta@uni.com
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAI... simone.rossi@acme.com
 ```
 
 **Copia tutto l'output** (da `ssh-ed25519` fino all'email).
@@ -280,7 +280,7 @@ Output atteso:
 
 ```
 github.com
-  ✓ Logged in to github.com as simone-mezzabotta (oauth_token)
+  ✓ Logged in to github.com as simone-rossi (oauth_token)
   ✓ Git operations for github.com configured to use ssh protocol.
   ✓ Token: gho_************************************
      ✓ Token scopes: gist, read:org, repo
@@ -323,15 +323,15 @@ gh auth status
 
 ```
 # === Configurazione Git ===
-git config --global user.name "Simone Mezzabotta"
-git config --global user.email "simone.mezzabotta@uni.com"
+git config --global user.name "Simone Rossi"
+git config --global user.email "simone.rossi@acme.com"
 git config --global core.editor "nano"
 git config --global color.ui auto
 git config --global init.defaultBranch main
 git config --list
 
 # === Chiave SSH ===
-ssh-keygen -t ed25519 -C "simone.mezzabotta@uni.com"
+ssh-keygen -t ed25519 -C "simone.rossi@acme.com"
 cat ~/.ssh/id_ed25519.pub
 ssh -T git@github.com
 
